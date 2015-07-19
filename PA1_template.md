@@ -3,8 +3,9 @@
 ### Basic settings
 
 ```r
-echo = TRUE          # Always make code visible
-options(scipen = 1)  # Turn off scientific notations for numbers
+echo = TRUE                                    # Always make code visible
+options(scipen = 1)                            # Turn off scientific notations for numbers
+knitr::opts_chunk$set(fig.path = "figure/")    # Set the default figure output dir
 ```
 
 ### Load Libraries
@@ -86,7 +87,7 @@ StepsPerDay
 qplot(StepsPerDay, xlab='Total Number of Steps per Day', ylab='Count', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![](figure/unnamed-chunk-7-1.png) 
 
 ##### 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -116,7 +117,7 @@ nint <- as.numeric(names(MeanStepsPerInt))
 qplot(x=nint, y=MeanStepsPerInt, geom="line", color=I("brown"), xlab="5-minute interval", ylab="Average number of steps taken per interval", main="Time Series Plot of 5-minute Intervals Averaged Over All days")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
+![](figure/unnamed-chunk-9-1.png) 
 
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -164,7 +165,7 @@ NStepsPerDay <- with( ndata, tapply(steps, date, sum) )
 qplot(NStepsPerDay, xlab='Total Number of Steps per Day', ylab='Count', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![](figure/unnamed-chunk-13-1.png) 
 
 ##### 4b. Calculate and report the mean and median total number of steps taken per day. 
 
@@ -239,8 +240,9 @@ ndata <- group_by(ndata, weekday, interval)
 wndata <- summarize(ndata, steps=mean(steps))
 
 # Plot generation
-ggplot(wndata, aes(interval, steps)) + geom_line() + facet_grid(weekday ~ .) + xlab("5-minute intervals") + 
-  ylab("Average Number of Steps") + ggtitle("Difference in Activity Pattern Between Weekdays and Weekends")
+ggplot(wndata, aes(interval, steps)) + geom_line(color=I("brown")) + facet_grid(weekday ~ .) + 
+  xlab("5-minute intervals") + ylab("Average Number of Steps") + 
+  ggtitle("Difference in Activity Pattern Between Weekdays and Weekends")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-17-1.png) 
+![](figure/unnamed-chunk-17-1.png) 
