@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-  keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 ### Basic settings
 
@@ -91,7 +86,7 @@ StepsPerDay
 qplot(StepsPerDay, xlab='Total Number of Steps per Day', ylab='Count', binwidth=500)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
 
 ##### 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -121,7 +116,7 @@ nint <- as.numeric(names(MeanStepsPerInt))
 qplot(x=nint, y=MeanStepsPerInt, geom="line", color=I("brown"), xlab="5-minute interval", ylab="Average number of steps taken per interval", main="Time Series Plot of 5-minute Intervals Averaged Over All days")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 ##### 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -169,7 +164,7 @@ NStepsPerDay <- with( ndata, tapply(steps, date, sum) )
 qplot(NStepsPerDay, xlab='Total Number of Steps per Day', ylab='Count', binwidth=500)
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
 
 ##### 4b. Calculate and report the mean and median total number of steps taken per day. 
 
@@ -248,4 +243,4 @@ ggplot(wndata, aes(interval, steps)) + geom_line() + facet_grid(weekday ~ .) + x
   ylab("Average Number of Steps") + ggtitle("Difference in Activity Pattern Between Weekdays and Weekends")
 ```
 
-![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-17-1.png) 
