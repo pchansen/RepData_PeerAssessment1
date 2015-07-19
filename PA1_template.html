@@ -180,7 +180,7 @@ sum(is.na(data))</code></pre>
 </div>
 <div id="devise-a-strategy-for-filling-in-all-of-the-missing-values-in-the-dataset.-the-strategy-does-not-need-to-be-sophisticated.-for-example-you-could-use-the-meanmedian-for-that-day-or-the-mean-for-that-5-minute-interval-etc." class="section level5">
 <h5>2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</h5>
-<p>Some days appear to have no steps data. Therefore my preferred method is to replace the missing data with the mean value for the same 5-minute interval from the mean values calculated above (derived from the non-missing data).</p>
+<p>Some days appear to have no steps data present at all. Therefore my preferred method for filling in the missing values is to replace any missing data with the mean value from the equivalent 5-minute interval calculated from the non-missing data above.</p>
 </div>
 <div id="create-a-new-dataset-that-is-equal-to-the-original-dataset-but-with-the-missing-data-filled-in." class="section level5">
 <h5>3. Create a new dataset that is equal to the original dataset but with the missing data filled in.</h5>
