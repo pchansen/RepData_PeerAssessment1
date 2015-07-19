@@ -144,7 +144,7 @@ sum(is.na(data))
 
 ##### 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Some days appear to have no steps data. Therefore my preferred method is to replace the missing data with the mean value for the same 5-minute interval.
+Some days appear to have no steps data. Therefore my preferred method is to replace the missing data with the mean value for the same 5-minute interval from the mean values calculated above (derived from the non-missing data).
 
 ##### 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
