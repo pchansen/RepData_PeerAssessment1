@@ -1,4 +1,5 @@
 # Reproducible Research: Peer Assessment 1
+16 August 2015  
 
 ### Basic settings
 
@@ -6,6 +7,7 @@
 echo = TRUE                                    # Always make code visible
 options(scipen = 1)                            # Turn off scientific notations for numbers
 knitr::opts_chunk$set(fig.path = "figure/")    # Set the default figure output dir
+knitr::opts_chunk$set(cache=TRUE)              # Caching always on
 ```
 
 ### Load Libraries
@@ -27,7 +29,7 @@ if ( !file.exists(data.file) ) {
   print("Downloading zip file...") 
   
   # Retrieve zip data from URL
-  download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", zip.file)
+  download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip", destfile=zip.file)  
   
   # Unzip zip file
   print("Unzipping file...")       
@@ -144,7 +146,7 @@ sum(is.na(data))
 
 ##### 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Some days appear to have no steps data present at all. Therefore my preferred method for filling in the missing values is to replace any missing data with the mean value from the equivalent 5-minute interval calculated from the non-missing data above.
+Some days appear to have no steps data present at all. Therefore my chosen method for filling in the missing values is to replace any missing data with the mean value from the equivalent 5-minute interval calculated from the non-missing data above.
 
 ##### 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
@@ -196,7 +198,7 @@ median_NStepsPerDay - median_StepsPerDay
 ## [1] 1.188679
 ```
 
-So there appears to be **no difference** on the estimated mean value of Steps per Day and only **a very small difference** (slighty greater) on the estimated median value of Steps Per Day.
+So there appears to be **no difference** on the estimated mean value of Steps per Day and only **a very small difference greater** (1.189) on the estimated median value of Steps Per Day.
 
 ##### 4d. What is the impact of imputing missing data on the estimates of the total daily number of steps?
 There is very little impact of imputing missing data on the estimates of the total daily number of steps using this particular method of filling in missing data. In particular there is no difference on the estimated mean value of Steps per Day and only a very small difference on the estimated median value of Steps Per Day. This is as expected from the filling in method, where missing data per 5-minute interval was replaced with the non-missing mean value. This would preserve mean values overall, and bias the reported median value towards the mean.
@@ -246,3 +248,6 @@ ggplot(wndata, aes(interval, steps)) + geom_line(color=I("brown")) + facet_grid(
 ```
 
 ![](figure/unnamed-chunk-17-1.png) 
+
+### Conclusion
+Visual inspection of the two plots suggests that there are differences in activity patterns between weekdays and weekends. For example there appears to be more activity earlier in the day on weekdays (between about the 600-750th 5-minute intervals) and a higher level of activity immediately following this (between the 750-900th 5-minute intervals) compared to weekends. Conversely, there also appears to be more activity later in the day on weekends (between about the 1900-2300th 5-minute intervals) compared to weekends.
